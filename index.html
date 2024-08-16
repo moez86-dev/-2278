@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سجل الإيرادات والمصروفات - جمعية أبناء كفر نفرة الخيرية</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center mb-4">
+            <img src="01.jpeg" alt="شعار الجمعية" class="association-logo">
+        </div>
+        <div class="title-box">
+            <h1 class="title text-center mb-4">سجل الإيرادات والمصروفات - جمعية أبناء كفر نفرة الخيرية</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-center">إضافة سجل جديد</h3>
+                <form id="transaction-form" class="text-center">
+                    <div class="form-row justify-content-center">
+                        <div class="form-group col-md-2">
+                            <label for="docNumber">رقم المستند</label>
+                            <input type="text" id="docNumber" class="form-control text-center" required>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="docDate">تاريخ المستند</label>
+                            <input type="date" id="docDate" class="form-control text-center" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="description">الوصف</label>
+                            <input type="text" id="description" class="form-control text-center" required>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="amount">المبلغ</label>
+                            <input type="number" id="amount" class="form-control text-center" required>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="type">النوع</label>
+                            <select id="type" class="form-control text-center">
+                                <option value="income">إيرادات</option>
+                                <option value="expense">مصروفات</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary float-left"><i class="fas fa-plus"></i> إضافة</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- قسم عرض السجلات -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <h3 class="text-center">السجلات</h3>
+                <table class="table table-bordered text-center table-skyblue">
+                    <thead class="table-header">
+                        <tr>
+                            <th>رقم المستند</th>
+                            <th>تاريخ المستند</th>
+                            <th>الوصف</th>
+                            <th>المبلغ</th>
+                            <th>النوع</th>
+                            <th>حذف</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transaction-list"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- قسم عرض النتائج -->
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <h4 class="report-box text-center">إجمالي المبالغ: <span id="total-amount" class="total-neutral">0</span> جنيه</h4>
+            </div>
+            <div class="col-md-3">
+                <h4 class="report-box text-center">إجمالي الإيرادات: <span id="total-income" class="total-positive">0</span> جنيه</h4>
+            </div>
+            <div class="col-md-3">
+                <h4 class="report-box text-center">إجمالي المصروفات: <span id="total-expense" class="total-negative">0</span> جنيه</h4>
+            </div>
+            <div class="col-md-3">
+                <h4 class="report-box text-center">الفرق بالعجز أو الزيادة: <span id="balance" class="balance-neutral">0</span> جنيه</h4>
+            </div>
+        </div>
+        
+        <!-- زر تصدير إلى Excel -->
+        <div class="row mt-4 justify-content-center">
+            <div class="col-md-3 text-center">
+                <button id="export-btn" class="btn btn-success"><i class="fas fa-file-export"></i> تصدير إلى Excel</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center mt-4">
+        <p>جميع الحقوق محفوظة - محمد عبدالمعز 2024</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
